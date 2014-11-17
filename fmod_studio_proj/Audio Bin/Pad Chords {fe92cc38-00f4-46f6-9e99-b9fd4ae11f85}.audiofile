@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.05.00">
+    <object class="AudioFile" id="{fe92cc38-00f4-46f6-9e99-b9fd4ae11f85}">
+        <property name="frequencyInKHz">
+            <value>48</value>
+        </property>
+        <property name="channelCount">
+            <value>2</value>
+        </property>
+        <property name="length">
+            <value>36.226416666666665</value>
+        </property>
+        <property name="lastModifiedDate">
+            <value>0</value>
+        </property>
+        <property name="audioFilePath">
+            <value>$(AUDIO_BIN_DIR)/Pad Chords {0b5fcc6e-a72d-4101-bd25-8ce07bb12574}.ogg</value>
+        </property>
+        <relationship name="container">
+            <destination>{37fbd948-9fdb-494e-8003-fe93ca8ee073}</destination>
+        </relationship>
+    </object>
+</objects>

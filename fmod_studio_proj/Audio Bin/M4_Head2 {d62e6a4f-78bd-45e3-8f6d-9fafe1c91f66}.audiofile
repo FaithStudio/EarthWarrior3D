@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.05.00">
+    <object class="AudioFile" id="{d62e6a4f-78bd-45e3-8f6d-9fafe1c91f66}">
+        <property name="frequencyInKHz">
+            <value>48</value>
+        </property>
+        <property name="channelCount">
+            <value>1</value>
+        </property>
+        <property name="length">
+            <value>0.034041666666666665</value>
+        </property>
+        <property name="lastModifiedDate">
+            <value>0</value>
+        </property>
+        <property name="audioFilePath">
+            <value>$(AUDIO_BIN_DIR)/M4_Head2 {5eb99985-0a9f-465f-973e-3fb814c97ddd}.ogg</value>
+        </property>
+        <relationship name="container">
+            <destination>{13ee3344-3f8f-41c2-83fa-6ab88e6c675e}</destination>
+        </relationship>
+    </object>
+</objects>

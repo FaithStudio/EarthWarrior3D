@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.05.00">
+    <object class="MasterBank" id="{7dcc96f9-64d6-4396-823d-a6b340274699}">
+        <property name="name">
+            <value>Master</value>
+        </property>
+        <relationship name="folder">
+            <destination>{abf2db99-7ebf-476b-b908-532cd027c334}</destination>
+        </relationship>
+        <relationship name="buildSettings">
+            <destination>{e2a25178-8111-4735-a22c-de9b76cf97dd}</destination>
+            <destination>{dcfeae90-f4cd-44e4-a7ae-a1dcbe4d0d8d}</destination>
+        </relationship>
+        <relationship name="buildHash">
+            <destination>{c13a0dab-217e-46b5-8cb9-de01f8156226}</destination>
+        </relationship>
+    </object>
+    <object class="DesktopBuildSetting" id="{e2a25178-8111-4735-a22c-de9b76cf97dd}">
+        <relationship name="compressionSettings">
+            <destination>{b1e2c61f-0fde-4421-bd9e-a548e4f81b2a}</destination>
+            <destination>{de3d28c8-7994-4c72-85d4-9849d2a591ce}</destination>
+            <destination>{b6d6ea0b-2f91-4f85-90d3-3f2073d9bac6}</destination>
+        </relationship>
+        <relationship name="activeCompressionSetting">
+            <destination>{b1e2c61f-0fde-4421-bd9e-a548e4f81b2a}</destination>
+        </relationship>
+        <relationship name="buildHash">
+            <destination>{43d377e5-ba9e-4e4f-a6e2-6a36544248b8}</destination>
+        </relationship>
+    </object>
+    <object class="MobileBuildSetting" id="{dcfeae90-f4cd-44e4-a7ae-a1dcbe4d0d8d}">
+        <relationship name="compressionSettings">
+            <destination>{9257c50d-eee5-4f9a-b231-6ae5daa5df27}</destination>
+            <destination>{3f9a2dd7-5466-4182-a864-809d2388a656}</destination>
+            <destination>{cac9c934-9186-47f5-a9da-f7271655976a}</destination>
+        </relationship>
+        <relationship name="activeCompressionSetting">
+            <destination>{9257c50d-eee5-4f9a-b231-6ae5daa5df27}</destination>
+        </relationship>
+        <relationship name="buildHash">
+            <destination>{433e11aa-184b-4854-a882-dfff449ea3de}</destination>
+        </relationship>
+    </object>
+    <object class="MasterBankBuildHash" id="{c13a0dab-217e-46b5-8cb9-de01f8156226}"/>
+    <object class="LossyCompressionSetting" id="{b1e2c61f-0fde-4421-bd9e-a548e4f81b2a}">
+        <property name="type">
+            <value>Vorbis</value>
+        </property>
+        <property name="quality">
+            <value>40.5</value>
+        </property>
+    </object>
+    <object class="PCMCompressionSetting" id="{de3d28c8-7994-4c72-85d4-9849d2a591ce}">
+        <property name="type">
+            <value>ADPCM</value>
+        </property>
+        <property name="sampleRate">
+            <value>48000</value>
+        </property>
+    </object>
+    <object class="PCMCompressionSetting" id="{b6d6ea0b-2f91-4f85-90d3-3f2073d9bac6}">
+        <property name="type">
+            <value>PCM</value>
+        </property>
+    </object>
+    <object class="MasterBankBuildHash" id="{43d377e5-ba9e-4e4f-a6e2-6a36544248b8}"/>
+    <object class="PCMCompressionSetting" id="{9257c50d-eee5-4f9a-b231-6ae5daa5df27}">
+        <property name="type">
+            <value>ADPCM</value>
+        </property>
+        <property name="sampleRate">
+            <value>24000</value>
+        </property>
+    </object>
+    <object class="LossyCompressionSetting" id="{3f9a2dd7-5466-4182-a864-809d2388a656}">
+        <property name="type">
+            <value>Vorbis</value>
+        </property>
+    </object>
+    <object class="PCMCompressionSetting" id="{cac9c934-9186-47f5-a9da-f7271655976a}">
+        <property name="type">
+            <value>PCM</value>
+        </property>
+    </object>
+    <object class="MasterBankBuildHash" id="{433e11aa-184b-4854-a882-dfff449ea3de}"/>
+</objects>

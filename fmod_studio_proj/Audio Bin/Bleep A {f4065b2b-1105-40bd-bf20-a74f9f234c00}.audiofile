@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.05.00">
+    <object class="AudioFile" id="{f4065b2b-1105-40bd-bf20-a74f9f234c00}">
+        <property name="frequencyInKHz">
+            <value>48</value>
+        </property>
+        <property name="channelCount">
+            <value>2</value>
+        </property>
+        <property name="length">
+            <value>9.0566041666666663</value>
+        </property>
+        <property name="lastModifiedDate">
+            <value>0</value>
+        </property>
+        <property name="audioFilePath">
+            <value>$(AUDIO_BIN_DIR)/Bleep A {333fe49f-5759-46cc-ad5d-8f059ff85e7e}.ogg</value>
+        </property>
+        <relationship name="container">
+            <destination>{37fbd948-9fdb-494e-8003-fe93ca8ee073}</destination>
+        </relationship>
+    </object>
+</objects>
