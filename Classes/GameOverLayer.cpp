@@ -29,6 +29,7 @@
 #include "GameControllers.h"
 #include "AirCraft.h"
 #include "Bullets.h"
+#include "FMODAudioEngine.h"
 #include <sstream>
 
 GameOverLayer* GameOverLayer::create(int score)
@@ -132,6 +133,7 @@ void GameOverLayer::ShowScore()
 
 void GameOverLayer::menu_backtomenu_Callback(Ref* sender)
 {
+    FMODAudioEngine::playEvent("event:/UI/select");
     backtomenu_Item->runAction(Sequence::create(ScaleTo::create(0.1f, 1.1f),
                                                 ScaleTo::create(0.1f, 0.9f),
                                                 ScaleTo::create(0.1f, 1.0f),
@@ -140,8 +142,6 @@ void GameOverLayer::menu_backtomenu_Callback(Ref* sender)
 
 void GameOverLayer::menu_backtomenu()
 {
-    CocosDenshion::SimpleAudioEngine::getInstance()->stopBackgroundMusic();
-    
     Director::getInstance()->replaceScene(MainMenuScene::createScene());
     for(int i=EnemyController::enemies.size()-1;i>=0;i--)
     {
@@ -172,7 +172,6 @@ void GameOverLayer::menu_playagain_Callback(Ref* sender)
 
 void GameOverLayer::menu_playagain()
 {
-    CocosDenshion::SimpleAudioEngine::getInstance()->stopBackgroundMusic();
     GameLayer::isDie = false;
     for(int i=EnemyController::enemies.size()-1;i>=0;i--)
     {

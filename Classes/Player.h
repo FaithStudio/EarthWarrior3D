@@ -27,6 +27,7 @@
 
 #include "cocos2d.h"
 #include "AirCraft.h"
+#include "FMODAudioEngine.h"
 
 //support controller
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
@@ -76,6 +77,8 @@ protected:
     float targetAngle;
     Vec2 targetPos;
     Vec2 _trailOffset;
+    FMOD::Studio::EventInstance *_HealthSound;
+    FMOD::Studio::ParameterInstance *_HealthSoundParam;
     
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     float keyX;

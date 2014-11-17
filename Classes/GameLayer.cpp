@@ -32,7 +32,7 @@
 //#include "EnemyManager.h"
 #include "Effects.h"
 #include "GameEntity.h"
-#include "SimpleAudioEngine.h"
+#include "FMODAudioEngine.h"
 #include "Effects.h"
 #include "ParticleManager.h"
 USING_NS_CC;
@@ -56,7 +56,7 @@ bool GameLayer::init()
     
 	xScroll = 0.0f;
     speed = -60.0f;
-	_elapsed = 20; //testing purpose, this was set to near boss timer
+	_elapsed = 0; //testing purpose, this was set to near boss timer
     _bossOut = false;
 
     _spr = Sprite::create("groundLevel.jpg");
@@ -115,6 +115,10 @@ void GameLayer::gameMaster(float dt)
         return;
     }
     _elapsed+=dt;
+
+    float level = min(65.0f, _elapsed);
+    FMODAudioEngine::setBackgroundMusicParam("level", level);
+
     int enemyCount =EnemyController::enemies.size();
     //if(_elapsed < 10 && enemyCount < 5)
     if(enemyCount < 5 &&_elapsed < 60)
@@ -138,7 +142,7 @@ void GameLayer::gameMaster(float dt)
         static_cast<FodderLeader*>(leader)->setMoveMode(moveMode::kDefault);
     }
     //else if(_elapsed < 20 && enemyCount <5)
-    if(_elapsed > 4 && enemyCount <4 &&_elapsed < 60)
+    if(_elapsed > 20 && enemyCount <4 &&_elapsed < 60)
     {
         Vec2 random = Vec2(-400, BOUND_RECT.size.height/4*CCRANDOM_MINUS1_1()+350);
         for(int i=0; i < 3; i++)
@@ -162,7 +166,7 @@ void GameLayer::gameMaster(float dt)
         leader->schedule(schedule_selector(FodderLeader::shoot),CCRANDOM_0_1()*1+1,90,0);
         
     }
-    if(_elapsed > 10 && enemyCount < 4 &&_elapsed < 60 )
+    if(_elapsed > 40 && enemyCount < 4 &&_elapsed < 60 )
     {
         for(int q = 0; q< 2; q++)
         {
@@ -214,15 +218,13 @@ void GameLayer::gameMaster(float dt)
         _bossOut = true;
         auto boss = EnemyController::spawnEnemy(kEnemyBoss);
         boss->setPosition(0,800);
-        CocosDenshion::SimpleAudioEngine::getInstance()->stopBackgroundMusic();
-        // Music By Matthew Pable (http://www.matthewpablo.com/)
-        // Licensed under CC-BY 3.0 (http://creativecommons.org/licenses/by/3.0/)
-        CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic("Orbital Colossus_0.mp3", true);
     }
 }
 
 void GameLayer::update(float dt)
 {
+    FMODAudioEngine::update();
+
     xScroll += speed*dt;
     _spr->setTextureRect(Rect(0,((int)xScroll)%2048,512,1200));
     //_cloud->setTextureRect(Rect(0,((int)xScroll)%1024, 256, 1024));

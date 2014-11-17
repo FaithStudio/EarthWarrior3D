@@ -39,3 +39,7 @@ xcschememanagement.plist
 ._.*
 xcuserdata/
 DerivedData/
+proj.win32/Debug.win32/
+*.opensdf
+*.sdf
+proj.win32/Release.win32/

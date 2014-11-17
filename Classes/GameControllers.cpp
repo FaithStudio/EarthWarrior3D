@@ -28,7 +28,7 @@
 #include "consts.h"
 #include "AirCraft.h"
 #include "Effects.h"
-#include "SimpleAudioEngine.h"
+#include "FMODAudioEngine.h"
 #include "Enemies.h"
 #include "Player.h"
 #include "HelloWorldScene.h"
@@ -288,10 +288,10 @@ void GameController::update(float dt, Player* player)
                                 case kPlayerMissiles:
                                     EffectManager::createExplosion(b->getPosition());
                                 
-                                    CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("boom2.mp3");
+                                    FMODAudioEngine::playEvent("event:/SFX/missile_hit");
                                     break;
                                 default:
-                                    CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("hit.mp3");
+                                    FMODAudioEngine::playEvent("event:/SFX/bullet_hit");
                                     break;
                             }
                         }

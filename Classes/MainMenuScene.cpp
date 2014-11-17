@@ -29,6 +29,7 @@
 #include "GameLayer.h"
 #include "HelloWorldScene.h"
 #include "LicenseLayer.h"
+#include "FMODAudioEngine.h"
 USING_NS_CC;
 
 Scene* MainMenuScene::createScene()
@@ -56,9 +57,9 @@ bool MainMenuScene::init()
 	
 	pRate = 3.1415926/2;
 
-    // Music By Matthew Pable (http://www.matthewpablo.com/)
-    // Licensed under CC-BY 3.0 (http://creativecommons.org/licenses/by/3.0/)
-    CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic("Star_Chaser.mp3");
+    FMODAudioEngine::playBackgroundMusic("event:/Music/menu");
+    FMODAudioEngine::setBackgroundMusicParam("Progression", 1.0f);
+    FMODAudioEngine::setBackgroundMusicParam("Pickup", 1.0f);
     
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("menu_scene.plist","menu_scene.png");
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Particle.plist","Particle.png");
@@ -193,10 +194,12 @@ void MainMenuScene::onKeyUp(Controller *controller, int keyCode,Event *event)
 void MainMenuScene::update(float dt){
     pRate+=0.01;
     plane->setPosition3D(Vec3(visible_size_macro.width/2+50,480-20*sin(1.05*pRate),0));
+    FMODAudioEngine::update();
 }
 
 void MainMenuScene::startgame(Ref* sender)
 {
+    FMODAudioEngine::playEvent("event:/UI/select");
     startgame_item->runAction(Sequence::create(ScaleTo::create(0.1f, 1.4f),
                                                 ScaleTo::create(0.1f, 1.2f),
                                                 ScaleTo::create(0.1f, 1.3f),
@@ -205,13 +208,14 @@ void MainMenuScene::startgame(Ref* sender)
 
 void MainMenuScene::startgame_callback()
 {
-    CocosDenshion::SimpleAudioEngine::getInstance()->stopBackgroundMusic();
     GameLayer::isDie=false;
     auto scene = (LoadingScene::audioloaded) ? HelloWorld::createScene() :LoadingScene::createScene();
     Director::getInstance()->replaceScene(scene);
 }
 
-void MainMenuScene::credits(Ref* sender){
+void MainMenuScene::credits(Ref* sender)
+{
+    FMODAudioEngine::playEvent("event:/UI/select");
     credits_item->runAction(Sequence::create(ScaleTo::create(0.1f, 0.8f),
                                                ScaleTo::create(0.1f, 0.6f),
                                                ScaleTo::create(0.1f, 0.7f),
@@ -232,7 +236,9 @@ void MainMenuScene::credits_callback()
                                         NULL));
 }
 
-void MainMenuScene::license(Ref* sender){
+void MainMenuScene::license(Ref* sender)
+{
+    FMODAudioEngine::playEvent("event:/UI/select");
     license_item->runAction(Sequence::create(ScaleTo::create(0.1f, 0.8f),
                                                ScaleTo::create(0.1f, 0.6f),
                                                ScaleTo::create(0.1f, 0.7f),

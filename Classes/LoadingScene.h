@@ -26,10 +26,8 @@
 #define __Moon3d__LoadingScene__
 
 #include "cocos2d.h"
-#include "SimpleAudioEngine.h"
 
 USING_NS_CC;
-using namespace CocosDenshion;
 
 #define TOTAL_PIC_NUM 13
 

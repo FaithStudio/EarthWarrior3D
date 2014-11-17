@@ -23,7 +23,7 @@
  ****************************************************************************/
 
 #include "AirCraft.h"
-#include "SimpleAudioEngine.h"
+#include "FMODAudioEngine.h"
 #include "Effects.h"
 #include "HelloWorldScene.h"
 
@@ -39,7 +39,7 @@ bool AirCraft::hurt(float damage)
 }
 void AirCraft::die()
 {
-    CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("explodeEffect.mp3");
+    FMODAudioEngine::playEventWithParam("event:/SFX/aircraft_explode", "size", _size);
     EffectManager::createBigExplosion(getPosition());
     auto helloworld = (HelloWorld*)Director::getInstance()->getRunningScene()->getChildByTag(100);
     int score = helloworld->getScore();

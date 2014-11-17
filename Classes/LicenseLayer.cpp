@@ -23,6 +23,7 @@
  ****************************************************************************/
 
 #include "LicenseLayer.h"
+#include "FMODAudioEngine.h"
 
 LicenseLayer* LicenseLayer::create(const char* type_file_name)
 {
@@ -64,7 +65,10 @@ bool LicenseLayer::init()
     return true;
 }
 
-void LicenseLayer::dismiss(){
+void LicenseLayer::dismiss()
+{
+    FMODAudioEngine::playEvent("event:/UI/back");
+
     this->removeFromParent();
 }
 

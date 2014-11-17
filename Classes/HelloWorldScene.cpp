@@ -27,6 +27,7 @@
 #include "HelloWorldScene.h"
 #include "GameOverLayer.h"
 #include "GameControllers.h"
+#include "FMODAudioEngine.h"
 
 USING_NS_CC;
 
@@ -71,6 +72,7 @@ bool HelloWorld::init()
     {
         return false;
     }
+    FMODAudioEngine::playBackgroundMusic("event:/Music/game");
     Size visibleSize = Director::getInstance()->getVisibleSize();
     auto origin = Director::getInstance()->getVisibleOrigin();
     auto sb = GameLayer::create();

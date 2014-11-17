@@ -26,7 +26,7 @@
 #include "GameControllers.h"
 #include "Bullets.h"
 #include "consts.h"
-#include "SimpleAudioEngine.h"
+#include "FMODAudioEngine.h"
 #include "Effects.h"
 #include "HelloWorldScene.h"
 #include "GameLayer.h"
@@ -34,6 +34,7 @@
 
 bool Fodder::init()
 {
+    _size = 1;
     _score = 10;
 	_alive = true;
     _Model = EffectSprite3D::createFromObjFileAndTexture("dijiyuanv001.obj", "dijiyuanv001.png");
@@ -99,6 +100,7 @@ void Fodder::shoot(float dt)
 
 bool FodderLeader::init()
 {
+    _size = 2;
     _score = 20;
 	_alive = true;
     _Model = EffectSprite3D::createFromObjFileAndTexture("dijiyuanv001.c3b", "dijiyuanv001.png");
@@ -124,6 +126,7 @@ void FodderLeader::reset()
 
 bool BigDude::init()
 {
+    _size = 2;
     _score = 20;
 	_alive = true;
 	_turnRate = 50;
@@ -181,7 +184,7 @@ void BigDude::shoot(float dt)
     bullet->setRotation(-CC_RADIANS_TO_DEGREES(angle)-90);
     bullet =BulletController::spawnBullet(kEnemyBullet, offset2, Vec2(cosf(angle)*-500, sinf(angle)*-500));
     bullet->setRotation(-CC_RADIANS_TO_DEGREES(angle)-90);
-        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("boom.mp3");
+    FMODAudioEngine::playEvent("event:/SFX/boss_shoot");
 }
 
 void BigDude::update(float dt, Node* player)
@@ -229,7 +232,7 @@ void BigDude::dismissMuzzle(float dt)
 
 void BigDude::die()
 {
-    CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("boom2.mp3");
+    FMODAudioEngine::playEvent("event:/SFX/missile_hit");
     this->_alive = false;
     EnemyController::enemies.eraseObject(this);
     EnemyController::showCaseEnemies.pushBack(this);
@@ -257,7 +260,7 @@ void BigDude::die()
 
 void BigDude::fall()
 {
-    CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("explodeEffect.mp3");
+    FMODAudioEngine::playEventWithParam("event:/SFX/aircraft_explode", "size", _size);
     EffectManager::createBigExplosion(getPosition());
     auto helloworld = (HelloWorld*)Director::getInstance()->getRunningScene()->getChildByTag(100);
     int score = helloworld->getScore();
@@ -281,6 +284,7 @@ void BigDude::fall()
 
 bool Boss::init()
 {
+    _size = 3;
     _score = 666;
 	_alive = true;
     _Model = EffectSprite3D::createFromObjFileAndTexture("boss.c3b", "boss.png");
@@ -384,6 +388,8 @@ void Boss::_next()
 
 void Boss::_dash()
 {
+    FMODAudioEngine::playEvent("event:/SFX/boss_by");
+
     int neg = (CCRANDOM_0_1()>0.5)? -1: 1;
     
     auto array = PointArray::create(6);
@@ -433,7 +439,7 @@ void Boss::startShooting(float dt)
 
 void Boss::createRandomExplosion()
 {
-    CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("explodeEffect.mp3");
+    FMODAudioEngine::playEventWithParam("event:/SFX/aircraft_explode", "size", _size);
     EffectManager::createBigExplosion(getPosition()+Vec2(CCRANDOM_MINUS1_1()*200, CCRANDOM_MINUS1_1()*200));
 }
 
@@ -461,7 +467,6 @@ void Boss::dead()
     label->runAction(Sequence::create(scale, scaleBack,NULL));
     EnemyController::showCaseEnemies.eraseObject(this);
     removeFromParent();
-    CocosDenshion::SimpleAudioEngine::getInstance()->stopBackgroundMusic();
     NotificationCenter::getInstance()->postNotification("ShowGameOver",NULL);
     scheduleOnce(schedule_selector(Boss::_endGame), 1.5);
 }
@@ -562,7 +567,7 @@ void Boss::shoot(float dt)
     bullet->setRotation(_Cannon1->getRotation()+180);
     bullet =BulletController::spawnBullet(kEnemyBullet, _getCannon2Position(), _getCannon2Vector());
     bullet->setRotation(_Cannon2->getRotation()+180);
-    CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("boom.mp3");
+    FMODAudioEngine::playEvent("event:/SFX/boss_shoot");
     schedule(schedule_selector(Boss::startShooting),1, 0, 3);
 }
 void Boss::update(float dt, Node* player)

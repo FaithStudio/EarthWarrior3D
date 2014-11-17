@@ -26,14 +26,12 @@
 #define __Moon3d__GameOverLayer__
 
 #include "cocos2d.h"
-#include "SimpleAudioEngine.h"
 
 //support controller need header files
 #include "base/CCEventListenerController.h"
 #include "base/CCController.h"
 
 USING_NS_CC;
-using namespace CocosDenshion;
 
 class GameOverLayer : public LayerColor
 {

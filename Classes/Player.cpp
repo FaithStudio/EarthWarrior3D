@@ -42,7 +42,13 @@ const float Player::rollReturnThreshold = 1.02;
 
 bool Player::init()
 {
+    _size = 0;
     _Model = EffectSprite3D::createFromObjFileAndTexture("playerv002.c3b", "playerv002_256.png");
+    
+    _HealthSound = FMODAudioEngine::getEvent("event:/SFX/low_health");
+    _HealthSound->getParameter("health", &_HealthSoundParam);
+    _HealthSoundParam->setValue(1.0f); // Start at full health
+
     if(_Model)
     {
 		targetAngle = 0;
@@ -266,6 +272,9 @@ void Player::shootMissile(float dt)
 
 void Player::stop()
 {
+    _HealthSound->stop(FMOD_STUDIO_STOP_ALLOWFADEOUT);
+    _HealthSound->release();
+
     unschedule(schedule_selector(Player::shoot));
     unschedule(schedule_selector(Player::shootMissile));
 }
@@ -292,6 +301,9 @@ bool Player::hurt(float damage){
     auto to = ProgressFromTo::create(0.5, PublicApi::hp2percent(fromHP), PublicApi::hp2percent(toHP));
     hpView->runAction(to);
     
+    _HealthSound->start();
+    _HealthSoundParam->setValue(_HP / 100.0f);
+
     if(_HP <= 0  && _alive)
     {
         die();

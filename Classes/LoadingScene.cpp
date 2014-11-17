@@ -137,17 +137,6 @@ void LoadingScene::LoadingResource()
 void LoadingScene::LoadingMusic()
 {
     audioloaded = true;
-    auto Audio = CocosDenshion::SimpleAudioEngine::getInstance();
-    Audio->preloadEffect("explodeEffect.mp3");
-    Audio->preloadEffect("hit.mp3");
-    Audio->preloadEffect("boom2.mp3");
-    Audio->preloadEffect("boom.mp3");
-    Audio->preloadBackgroundMusic("Orbital Colossus_0.mp3");
-    //Audio->preloadBackgroundMusic("Star_Chaser.mp3");
-    
-    // Music By Matthew Pable (http://www.matthewpablo.com/)
-    // Licensed under CC-BY 3.0 (http://creativecommons.org/licenses/by/3.0/)
-    Audio->playBackgroundMusic("Flux2.mp3");
 }
 
 void LoadingScene::LoadingPic()

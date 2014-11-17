@@ -43,6 +43,7 @@ protected:
     bool _alive;
     float _HP;
     int _score;
+    int _size;
 };
 
 #endif /* defined(__Moon3d__AirCraft__) */
