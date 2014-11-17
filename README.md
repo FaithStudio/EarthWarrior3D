@@ -12,6 +12,20 @@ Musics are copyrighted by [Matthew Pablo](http://www.matthewpablo.com/), and lic
 You may not use any art including 2d and 3d from this project for commercial purpose
 
 
+###FMOD
+
+This fork has replaced the audio with FMOD Studio events as a simple example of how to use the FMOD API.
+
+Currently only the Win32 project has been setup and is dependent on external libraries available from the FMOD website.
+
+1. Download FMOD Studio API 1.05.xx from http://www.fmod.org/download
+2. Install the API to any location.
+3. Copy [fmod dir]/api/lowlevel/inc/* to cocos2d/external/fmod/include
+4. Copy [fmod dir]/api/studio/inc/* to cocos2d/external/fmod/include
+5. Copy [fmod dir]/api/lowlevel/lib/* to cocos2d/external/fmod/prebuilt/win32
+6. Copy [fmod dir]/api/studio/lib/* to cocos2d/external/fmod/prebuilt/win32
+
+
 ###Sprite3D
 
 
